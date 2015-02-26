@@ -4,8 +4,8 @@ var fs = require('fs');
 
 var Transform = stream.Transform || require('readable-stream').Transform;
 
-function ignorechar(char) {
-    return '';
+function passthrough(char) {
+    return char;
 }
 
 function Deliedit(opts) {
@@ -13,7 +13,7 @@ function Deliedit(opts) {
     // add start end ref throws
 
     this.opts = opts;
-    this.transform = opts.transform || ignorechar;
+    this.transform = opts.transform || passthrough;
     this.delimiters = opts.delimiters;
 
     this.refStartAt = 0;
@@ -69,7 +69,7 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
                 toPushData += data[i];
 
                 if(!this.opts.invert) {
-                    toPushData = this.opts.transform(toPushData);
+                    toPushData = this.transform(toPushData);
                 }
             } else {
                 if(this.refEndAt === this.delimiters.end.length) {
@@ -92,7 +92,7 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
                 toPushData += data[i];
 
                 if(this.opts.invert) {
-                    toPushData = this.opts.transform(toPushData);
+                    toPushData = this.transform(toPushData);
                 }
             }
             else {
@@ -106,7 +106,8 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
 
         }
 
-        this.push(toPushData);
+        if(toPushData.length > 0)
+            this.push(toPushData);
         // --- end of logic ---
 
         if(this.refStartAt === this.delimiters.start.length) {
@@ -128,23 +129,13 @@ function uppercase(char) {
     return ('' + char).toUpperCase();
 }
 
-function one() {
-    return fs.createReadStream(require('path').join(process.cwd(), process.argv[2]))
-    .pipe(new Deliedit({
-        delimiters: {
-            start: 'XXX',
-            end: 'YYY'
-        },
-        invert: false,
-        withDelimiters: false,
-        transform: uppercase 
-    })).pipe(process.stdout);
+function ignorechar(char) {
+    return '';
 }
- 
-one();
 
 module.exports = {
     Deliedit: Deliedit,
     ignorechar: ignorechar,
-    uppercase: uppercase
+    uppercase: uppercase,
+    passthrough: passthrough
 };
