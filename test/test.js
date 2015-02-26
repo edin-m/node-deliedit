@@ -81,10 +81,4 @@ describe('testing deliedit library', function() {
         });
     });
 
-    describe('should test uppercase filter', function() {
-        
-        it('should transform text between delimiters to uppercase');
-
-    });
-
 });
