@@ -71,3 +71,10 @@ where:
 - *opts.invert* - apply transformation function to inside delimiter (if false) or outside delimiter (if true)
 - *opts.withDelimiters* - include delimiters themselves in output
 - *opts.transform* - transformation function: passthrough, ignorechar, uppercase available - defaults to passthrough
+
+TODO
+===
+
+ - Add support for some other internal transformations
+   eg.  html comment / uncomment
+        js comment / uncomment
