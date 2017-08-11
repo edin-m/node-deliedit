@@ -1,6 +1,5 @@
 var stream = require('stream');
 var util = require('util');
-var fs = require('fs');
 
 var Transform = stream.Transform || require('readable-stream').Transform;
 
@@ -9,11 +8,17 @@ function passthrough(char) {
 }
 
 function Deliedit(opts) {
+    if (!(this instanceof Deliedit)) {
+        return new Deliedit(options);
+    }
     opts = opts || {};
     // add start end ref throws
 
     this.opts = opts;
-    this.transform = opts.transform || passthrough;
+    if (typeof opts.transform === 'function' && typeof opts.transformFunc === 'undefined') {
+        console.warn('opts.transform is deprecated! use opts.transformFunc');
+    }
+    this.transformFunc = opts.transform || opts.transformFunc || passthrough;
     this.delimiters = opts.delimiters;
 
     this.refStartAt = 0;
@@ -69,7 +74,7 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
                 toPushData += data[i];
 
                 if(!this.opts.invert) {
-                    toPushData = this.transform(toPushData);
+                    toPushData = this.transformFunc(toPushData);
                 }
             } else {
                 if(this.refEndAt === this.delimiters.end.length) {
@@ -92,7 +97,7 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
                 toPushData += data[i];
 
                 if(this.opts.invert) {
-                    toPushData = this.transform(toPushData);
+                    toPushData = this.transformFunc(toPushData);
                 }
             }
             else {
@@ -106,8 +111,9 @@ Deliedit.prototype._transform = function(chunk, enc, cb) {
 
         }
 
-        if(toPushData.length > 0)
+        if(toPushData.length > 0) {
             this.push(toPushData);
+        }
         // --- end of logic ---
 
         if(this.refStartAt === this.delimiters.start.length) {

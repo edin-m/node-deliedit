@@ -22,7 +22,7 @@ describe('testing deliedit library', function() {
             },
             invert: typeof invert !== 'undefined' ? invert : false,
             withDelimiters: typeof delims !== 'undefined' ? delims : false,
-            transform: func || passthrough 
+            transformFunc: func || passthrough
         });
     }
 
