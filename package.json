@@ -28,8 +28,8 @@
     "readable-stream": "^1.0.33"
   },
   "devDependencies": {
-    "chai": "^2.1.0",
-    "mocha": "^2.2.1",
-    "stream-equal": "^0.1.5"
+    "chai": "2.1.0",
+    "mocha": "2.2.1",
+    "stream-equal": "1.0.1"
   }
 }
