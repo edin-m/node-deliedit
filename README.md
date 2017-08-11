@@ -1,8 +1,8 @@
 # node-deliedit
 Node js delimited text editing library.
 
-[![npm version](https://badge.fury.io/js/deliedit.svg)](https://badge.fury.io/js/deliedit)
-[![Build Status](https://travis-ci.org/edin-m/deliedit.svg?branch=master)](https://travis-ci.org/edin-m/deliedit)
+[![npm version](https://badge.fury.io/js/noddeliedit.svg)](https://badge.fury.io/js/deliedit)
+[![Build Status](https://travis-ci.org/edin-m/node-deliedit.svg?branch=master)](https://travis-ci.org/edin-m/node-deliedit)
 
 Node js library for editing stream of text based on delimiters.
 
