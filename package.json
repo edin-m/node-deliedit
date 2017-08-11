@@ -1,6 +1,6 @@
 {
   "name": "deliedit",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Node js delimited text editing library.",
   "main": "lib.js",
   "directories": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/edin-m/node-deliedit",
   "dependencies": {
-    "readable-stream": "^1.0.33"
+    "readable-stream": "1.0.33"
   },
   "devDependencies": {
     "chai": "2.1.0",
