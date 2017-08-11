@@ -1,0 +1,75 @@
+{
+  "env": {
+    "node": true,
+    "es6": false
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true
+  },
+  "rules": {
+    // indent 4 spaces
+    "indent": [
+      2,
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    // use unix lf - and warn if not
+    "linebreak-style": [
+      1,
+      "unix"
+    ],
+    // prefer single quote
+    "quotes": [
+      1,
+      "single"
+    ],
+    // prefer semi-colon at the end of the line
+    "semi": 1,
+    // prefer comma at the end of the line in objects, arrays, etc
+    "comma-dangle": [
+      1,
+      "only-multiline"
+    ],
+    // if then else on new lines
+    "brace-style": [
+      "error",
+      "1tbs"
+    ],
+    // prefer spaces around the keywords
+    "keyword-spacing": [
+      1
+    ],
+    // don't disallow console statements
+    "no-console": "off",
+    // enforce curly braces
+    "curly": 2,
+    // prefer comments with space
+    "spaced-comment": 1,
+    // don't disallow var keyword
+    "no-var": 0,
+    // warn on capitalized function names
+    "new-cap": 1,
+    // space before blocks mandatory
+    "space-before-blocks": 2,
+    // prefer space before function param parenthisis only when anonymous
+    "space-before-function-paren": [
+      1,
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
+    // require end-of-file newline
+    "eol-last": 2,
+    // warn unnecessary escapes
+    "no-useless-escape": 1
+  }
+}
