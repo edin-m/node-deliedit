@@ -1,7 +1,7 @@
 # node-deliedit
 Node js delimited text editing library.
 
-[![npm version](https://badge.fury.io/js/noddeliedit.svg)](https://badge.fury.io/js/deliedit)
+[![npm version](https://badge.fury.io/js/deliedit.svg)](https://badge.fury.io/js/deliedit)
 [![Build Status](https://travis-ci.org/edin-m/node-deliedit.svg?branch=master)](https://travis-ci.org/edin-m/node-deliedit)
 
 Node js library for editing stream of text based on delimiters.
@@ -38,7 +38,7 @@ var deliedit = new Deliedit({
   },
   invert: false,
   withDelimiters: true,
-  transform: uppercase
+  transformFunc: uppercase
 });
 
 fs.createReadStream('in.html').pipe(deliedit).pipe(process.stdout);
@@ -73,7 +73,9 @@ where:
 - *opts.delimiter.end* - end delimiter
 - *opts.invert* - apply transformation function to inside delimiter (if false) or outside delimiter (if true)
 - *opts.withDelimiters* - include delimiters themselves in output
-- *opts.transform* - transformation function: passthrough, ignorechar, uppercase available - defaults to passthrough
+- *opts.transformFunc* - transformation function: passthrough, ignorechar, uppercase available - defaults to passthrough
+
+- *opts.transform* - DEPRECATED
 
 TODO
 ===
