@@ -1,6 +1,6 @@
 {
   "name": "deliedit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Node js delimited text editing library.",
   "main": "lib.js",
   "directories": {
